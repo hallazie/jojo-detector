@@ -10,10 +10,11 @@ import os
 class Processer():
 	def __init__(self):
 		self.clfpath = 'F:/env/Python37/Lib/site-packages/cv2/data/haarcascade_frontalface_alt2.xml'
-		self.root = 'G:/episodes/[异域-11番小队][JoJo的奇妙冒险JoJo_no_Kimyou_na_Bouken][BDRIP][1-26+SP][X264-10bit_AAC][720P]'
+		# self.root = 'G:/episodes/[异域-11番小队][JoJo的奇妙冒险JoJo_no_Kimyou_na_Bouken][BDRIP][1-26+SP][X264-10bit_AAC][720P]'
+		# self.root = 'G:/episode s/JoJo no Kimyou na Bouken BD-1080p-asxzwang'
+		self.root = 'G:/episodes/JoJo\'s Bizarre Adventure Stardust Crusaders Battle in Egypt BD-1080p-asxzwang'
 		self.savepath = 'G:/datasets/face/jojo/frame'
 		self.rectcolor = (228, 16, 16)
-		self._init_data()
 
 	def _init_data(self):
 		self.clf = cv2.CascadeClassifier(self.clfpath)
@@ -30,14 +31,17 @@ class Processer():
 				print(f'{f} finished')
 
 	def _gen_video(self):
-		fps = 12
+		fps = 24
 		size = (662, 332)
 		videowriter = cv2.VideoWriter('output/gan-sample.mp4', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), fps, size)
 		path = 'F:/machinelearning/vision/style-based-gan-pytorch/sample/'
-		for i in os.listdir(path):
-			img = cv2.imread(path + i)
+		for i, name in enumerate(os.listdir(path)):
+			if i % 3 != 0:
+				continue
+			img = cv2.imread(path + name)
 			img = cv2.resize(img, size)
 			videowriter.write(img)
+
 
 	def _save_frame(self, vpath, vid):
 		vidcap = cv2.VideoCapture(vpath)
@@ -64,9 +68,23 @@ class Processer():
 				# 		x, y, w, h = rect
 				# 		cv2.rectangle(image, (x - 10, y - 10), (x + w, y + h), self.rectcolor, 2)
 				if saveflag:
-					cv2.imwrite(f'G:/datasets/face/jojo/frame/frame-{vid}-{str(idx).zfill(6)}.jpg', image)
+					cv2.imwrite(f'G:/datasets/face/jojo/frames/3e-frame-{vid}-{str(idx).zfill(6)}.jpg', image)
+
+	@staticmethod
+	def rename():
+		root = 'G:/datasets/face/jojo/1&2'
+		flist = os.listdir(root)
+		for f in flist:
+			if not f.endswith('jpg'):
+				continue
+			t = '1-' + f
+			old = root + '/' + f
+			new = root + '/' + t
+			os.rename(old, new)
 
 if __name__ == '__main__':
 	processer = Processer()
-	# processer._save_all()
-	processer._gen_video()
+	processer._init_data()
+	processer._save_all()
+	# processer.rename()
+	# processer._gen_video()
