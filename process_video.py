@@ -12,7 +12,8 @@ class Processer():
 		self.clfpath = 'F:/env/Python37/Lib/site-packages/cv2/data/haarcascade_frontalface_alt2.xml'
 		# self.root = 'G:/episodes/[异域-11番小队][JoJo的奇妙冒险JoJo_no_Kimyou_na_Bouken][BDRIP][1-26+SP][X264-10bit_AAC][720P]'
 		# self.root = 'G:/episode s/JoJo no Kimyou na Bouken BD-1080p-asxzwang'
-		self.root = 'G:/episodes/JoJo\'s Bizarre Adventure Stardust Crusaders Battle in Egypt BD-1080p-asxzwang'
+		# self.root = 'G:/episodes/JoJo\'s Bizarre Adventure Stardust Crusaders Battle in Egypt BD-1080p-asxzwang'
+		self.root = 'G:/episodes/[JOJO&UHA-WING&Kamigami][JoJo\'s Bizarre Adventure - Golden Wind][01-39][x264 1080p][CHT]'
 		self.savepath = 'G:/datasets/face/jojo/frame'
 		self.rectcolor = (228, 16, 16)
 
@@ -68,7 +69,7 @@ class Processer():
 				# 		x, y, w, h = rect
 				# 		cv2.rectangle(image, (x - 10, y - 10), (x + w, y + h), self.rectcolor, 2)
 				if saveflag:
-					cv2.imwrite(f'G:/datasets/face/jojo/frames/3e-frame-{vid}-{str(idx).zfill(6)}.jpg', image)
+					cv2.imwrite(f'G:/datasets/face/jojo/frames/5-frame-{vid}-{str(idx).zfill(6)}.jpg', image)
 
 	@staticmethod
 	def rename():
