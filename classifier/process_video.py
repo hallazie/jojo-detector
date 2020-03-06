@@ -31,18 +31,17 @@ class Processer():
 				self._save_frame(vpath, i)
 				print(f'{f} finished')
 
-	def _gen_video(self):
-		fps = 24
-		size = (662, 332)
-		videowriter = cv2.VideoWriter('output/gan-sample.mp4', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), fps, size)
-		path = 'F:/machinelearning/vision/style-based-gan-pytorch/sample/'
-		for i, name in enumerate(os.listdir(path)):
-			if i % 3 != 0:
-				continue
-			img = cv2.imread(path + name)
-			img = cv2.resize(img, size)
-			videowriter.write(img)
-
+	# def _gen_video(self):
+	# 	fps = 24
+	# 	size = (662, 332)
+	# 	videowriter = cv2.VideoWriter('output/gan-sample.mp4', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), fps, size)
+	# 	path = 'F:/machinelearning/vision/style-based-gan-pytorch/sample/'
+	# 	for i, name in enumerate(os.listdir(path)):
+	# 		if i % 3 != 0:
+	# 			continue
+	# 		img = cv2.imread(path + name)
+	# 		img = cv2.resize(img, size)
+	# 		videowriter.write(img)
 
 	def _save_frame(self, vpath, vid):
 		vidcap = cv2.VideoCapture(vpath)
