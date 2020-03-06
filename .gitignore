@@ -1,8 +1,8 @@
-/__pycache__/
-/checkpoint/
-/data/
-/model/
-/output/
+__pycache__/*
+checkpoint/*
+data/*
+model/*
+output/*
 *.jpg
 *.pkl
 *.pyc
