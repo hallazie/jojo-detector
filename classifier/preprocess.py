@@ -6,8 +6,8 @@ import os
 from shutil import copyfile
 
 def gen_dataset():
-	root_raw = 'G:/datasets/face/jojo/frames'
-	root_new = 'G:/datasets/face/jojo/clf'
+	root_raw = 'G:/datasets/face/jojo/face-raw'
+	root_new = 'G:/datasets/face/jojo/face-labeled'
 	for _,_,fs in os.walk(root_raw):
 		random.shuffle(fs)
 		for f in fs[:2000]:
